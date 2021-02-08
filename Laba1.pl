@@ -91,5 +91,8 @@ grand_pa_and_son(X,Y):- grand_pa(X,Y), man(Y) ; grand_pa(Y,X), man(X).
 
 grand_pa_and_da(X,Y):- grand_pa(X,Y), woman(Y) ; grand_pa(Y,X), woman(X).
 
+uncle(X,Y):- parent(Z,Y), brother(X,Z).
+uncles(X):- parent(Z,X), brothers(Z).
+
 
 :- program.
