@@ -70,5 +70,8 @@ mother(X):-mother(X,Y), write(Y), write(" "), fail.
 son(X,Y):-child(X,Y), man(X).
 son(X):-son(Y,X), write(Y).
 
+brother(X,Y):-parent(Z,X),parent(Z,Y), man(X), not(Y=X).
+brothers(X):-parent(Z,X), woman(Z), child(Y,Z), not(X=Y), man(Y), write(Y), write(" "), fail.
+
 
 :- program.
