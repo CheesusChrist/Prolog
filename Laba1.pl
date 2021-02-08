@@ -73,5 +73,8 @@ son(X):-son(Y,X), write(Y).
 brother(X,Y):-parent(Z,X),parent(Z,Y), man(X), not(Y=X).
 brothers(X):-parent(Z,X), woman(Z), child(Y,Z), not(X=Y), man(Y), write(Y), write(" "), fail.
 
+husband(X,Y):-man(X), parent(X,Z), parent(Y,Z).
+husband(X):-husband(Y,X), not(Y=X), write(Y).
+
 
 :- program.
