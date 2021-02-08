@@ -94,5 +94,8 @@ grand_pa_and_da(X,Y):- grand_pa(X,Y), woman(Y) ; grand_pa(Y,X), woman(X).
 uncle(X,Y):- parent(Z,Y), brother(X,Z).
 uncles(X):- parent(Z,X), brothers(Z).
 
+niece(X,Y):- woman(X), parent(Z,X), b_s(Z,Y).
+nieces(X):- niece(Y,X), write(Y), write(" "), fail.
+
 
 :- program.
