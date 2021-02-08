@@ -86,5 +86,8 @@ grand_pas(X):- grand_pa(Y,X), write(Y), write(" "), fail.
 grand_da(X,Y):- woman(X), parent(Z,X), parent(Y,Z).
 grand_dats(X):- grand_da(Y,X), write(Y), write(" "), fail.
 
+grand_so(X,Y):-man(X),parent(Z,X),parent(Y,Z).
+grand_pa_and_son(X,Y):- grand_pa(X,Y), man(Y) ; grand_pa(Y,X), man(X).
+
 
 :- program.
