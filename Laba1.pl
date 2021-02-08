@@ -67,4 +67,8 @@ children(X):-child(Y,X), write(Y), write(" "), fail.
 mother(X,Y):-woman(X), parent(X,Y).
 mother(X):-mother(X,Y), write(Y), write(" "), fail.
 
+son(X,Y):-child(X,Y), man(X).
+son(X):-son(Y,X), write(Y).
+
+
 :- program.
