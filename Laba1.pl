@@ -80,5 +80,8 @@ father(X,Y):- man(X), parent(X,Y).
 b_s(X,Y):- mother(Z,X), mother(W,Y), Z=W, father(K,X), father(C,Y), K=C.
 b_s(X):- b_s(X,Y), not(Y=X), write(Y), write(" "), fail.
 
+grand_pa(X,Y):- man(X), parent(Z,Y), parent(X,Z).
+grand_pas(X):- grand_pa(Y,X), write(Y), write(" "), fail.
+
 
 :- program.
