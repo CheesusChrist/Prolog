@@ -76,5 +76,9 @@ brothers(X):-parent(Z,X), woman(Z), child(Y,Z), not(X=Y), man(Y), write(Y), writ
 husband(X,Y):-man(X), parent(X,Z), parent(Y,Z).
 husband(X):-husband(Y,X), not(Y=X), write(Y).
 
+father(X,Y):- man(X), parent(X,Y).
+b_s(X,Y):- mother(Z,X), mother(W,Y), Z=W, father(K,X), father(C,Y), K=C.
+b_s(X):- b_s(X,Y), not(Y=X), write(Y), write(" "), fail.
+
 
 :- program.
