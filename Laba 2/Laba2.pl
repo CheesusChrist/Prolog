@@ -116,3 +116,32 @@ bed_by_the_window(ignatyevaMaria,1).
 bed_by_the_window(larionovAndrey,2).
 bed_by_the_window(nazarovGeorgiy,1).
 bed_by_the_window(tarshilovViktor,2).
+
+question1(X1):-	write("What is student's floor?"),nl,
+			write("1. First floor"),nl,
+			write("2. Second floor"),nl,
+    			write("3. Third floor"),nl,
+			write("4. Fourth floor"),nl,
+    			write("5. Fifth floor"),nl,
+				read(X1).
+
+question2(X2):-	write("What is student's gender?"),nl,
+			write("1. Male"),nl,
+			write("2. Female"),nl,
+			read(X2).
+
+question3(X3):-	write("What is student's group?"),nl,
+			write("1. 26/1"),nl,
+			write("2. 26/2"),nl,
+    			write("3. 29/1"),nl,
+			write("4. 29/2"),nl,
+			read(X3).
+
+question4(X4):-	write("Is student's bed located by the window?"),nl,
+			write("1. Yes, it is"),nl,
+			write("2. No, it isn't"),nl,
+			read(X4).
+
+pr:-		question1(X1),question2(X2),question3(X3),question4(X4),
+		floor(X,X1),gender(X,X2),group(X,X3),bed_by_the_window(X,X4),
+		write(X).
