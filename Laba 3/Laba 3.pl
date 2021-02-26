@@ -23,3 +23,7 @@ fibonachi(N,X):-fib(N,0,1,X).
 
 sumnumbers(N,N):- N<10.
 sumnumbers(N,X):- N>=10, D is N div 10, M is N mod 10, sumnumbers(D,X1), X is M+X1.
+
+sum(0,Sum,Sum):-!.
+sum(N,Sum,X):- D is N div 10, M1 is N mod 10, Sum1 is Sum + M1,sum(D,Sum1,X). 
+sumnumbers1(N,X):-sum(N,0,X).
