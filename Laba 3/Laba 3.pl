@@ -20,3 +20,6 @@ fib(N,X):- N1 is N-1, N2 is N-2, fib(N1,X1), fib(N2,X2), X is X1+X2.
 fib(0,A,_,A):-!.
 fib(N,A,B,X):- AB is A+B, N1 is N-1, fib(N1,B,AB,X).
 fibonachi(N,X):-fib(N,0,1,X).
+
+sumnumbers(N,N):- N<10.
+sumnumbers(N,X):- N>=10, D is N div 10, M is N mod 10, sumnumbers(D,X1), X is M+X1.
