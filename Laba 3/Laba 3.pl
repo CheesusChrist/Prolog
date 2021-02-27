@@ -65,3 +65,23 @@ kol_del_333(N,Count):-kol_del_3(N,N,Count).
 kol_del_33(1,_,1):-!.
 kol_del_33(I,N,Count):-I1 is I-1, (((0 is N mod I), not(0 is I mod 3)) ->  Count1 is Count+1;Count1 is Count), kol_del_33(I1,N,Count1).
 kol_del_33333(N,Count):-kol_del_3(N,N,Count).
+
+%number 18, sum of digits = 9, prod of digits = 8
+%divisors matching the condition of the task : 2, sum of divisors = 2
+%number 144, sum of digits = 9, prod of digits = 16
+%divisors matching the condition of the task : 2, 4, 8 è 16, sum of divisors = 30
+%fun fact: 144 = sum of digits*prod of digits = 9 * 16
+sum_digit(N, N):- N < 10, !.
+sum_digit(N, X):- N1 is N mod 10, N2 is N div 10, sum_digit(N2, X1), X is N1 + X1.    
+    
+prod_digit(N,N) :- N < 10, !.
+prod_digit(N,X) :- N1 is N mod 10, N2 is N div 10, prod_digit(N2,X1), X is X1 * N1.
+
+is_del(Del,N):- 0 is N mod Del.
+
+check_del(Del,N):- is_del(Del,N), sum_digit(N,S), nod(Del,S,SumNod), 1 is SumNod, 
+   prod_digit(N,P), nod(Del,P,ProdNod), not(1 is ProdNod).
+
+sum_del(_,0,Sum,X):-X is Sum, !.
+sum_del(N, Count, Sum, X):- Count1 is Count - 1,  ((check_del(Count,N)) -> Sum1 is Sum + Count;Sum1 is Sum), sum_del(N,Count1,Sum1,X).
+sum_del_chisla(N,X):-sum_del(N,N,0,X).
