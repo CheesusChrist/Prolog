@@ -35,3 +35,7 @@ maxDigit(N,X):- N1 is N div 10, N2 is N mod 10, maxDigit(N1,X1), N2>X1, X is N2.
 mDig(0,A,A):- !.
 mDig(A,B,C):- D is A mod 10, D>B, !, E is A div 10, mDig(E,D,C).
 mDig(A,B,C):- D is A div 10, mDig(D,B,C).
+
+min(N,N):-N<10.
+min(N,X):-N1 is N div 10, N2 is N mod 10, min(N1,X1), 1 is N2 mod 2, N2=<X1,!, X is N2. 
+min(N,X):- N1 is N div 10, N2 is N mod 10, min(N1,X1), N2>X1, X is X1.
