@@ -44,3 +44,16 @@ min1(0,N,N):- !.
 min1(N,B,X):- D is N mod 10, 1 is D mod 2, D<B, !, E is N div 10, min1(E,D,X). 
 min1(N,B,X):- D is N div 10, min1(D,B,X).
 minimal(N,X):-min1(N,10,X).
+
+nod(A,A,A):-!.
+nod(0,B,B):-!.
+nod(A,0,A):-!.
+nod(A,B,X):-A>B, C is A mod B, nod(C,B,X).
+nod(A,B,X):-A<B, C is B mod A, nod(A,C,X).
+
+kol_del(1,_,1):-!.
+kol_del(I,N,Count):-I1 is I-1, kol_del(I1,N,C), (0 is N mod I ->  Count is C+1;Count is C).
+kol_del123(N,Count):-kol_del(N,N,Count).
+
+simple(1):-true.
+simple(X):- kol_del123(X,C), 2 is C. 
