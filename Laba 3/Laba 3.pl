@@ -61,3 +61,7 @@ simple(X):- kol_del123(X,C), 2 is C.
 kol_del_3(1,_,1):-!.
 kol_del_3(I,N,Count):-I1 is I-1, kol_del_3(I1,N,C), ((0 is N mod I), not(0 is I mod 3) ->  Count is C+1;Count is C).
 kol_del_333(N,Count):-kol_del_3(N,N,Count).
+
+kol_del_33(1,_,1):-!.
+kol_del_33(I,N,Count):-I1 is I-1, (((0 is N mod I), not(0 is I mod 3)) ->  Count1 is Count+1;Count1 is Count), kol_del_33(I1,N,Count1).
+kol_del_33333(N,Count):-kol_del_3(N,N,Count).
