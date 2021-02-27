@@ -39,3 +39,8 @@ mDig(A,B,C):- D is A div 10, mDig(D,B,C).
 min(N,N):-N<10.
 min(N,X):-N1 is N div 10, N2 is N mod 10, min(N1,X1), 1 is N2 mod 2, N2=<X1,!, X is N2. 
 min(N,X):- N1 is N div 10, N2 is N mod 10, min(N1,X1), N2>X1, X is X1.
+
+min1(0,N,N):- !.
+min1(N,B,X):- D is N mod 10, 1 is D mod 2, D<B, !, E is N div 10, min1(E,D,X). 
+min1(N,B,X):- D is N div 10, min1(D,B,X).
+minimal(N,X):-min1(N,10,X).
