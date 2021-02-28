@@ -50,3 +50,9 @@ member(X,[_|T]):-member(X,T).
 reverse(L):-reverse(L,[],Answ).
 reverse([],InvL,InvL):-!.
 reverse([H|T],CurList,InvL):-reverse(T,[H|CurList],InvL).
+
+sub_list([],_):-!.
+sub_list([H|TS],[H|TL]):-sub_list(TS,TL).
+
+p(S,L):-sub_list(S,L),!.
+p(S,[_|T]):-p(S,T).
