@@ -67,3 +67,30 @@ pr_ein2:- Hair=[_,_,_],
     	not(in_list(Hair,[belokurov,blond])),
 
         write(Hair).
+
+%name, dress, shoes
+pr_ein3:- Friends=[_,_,_],
+    
+    	in_list(Friends,[anya,_,_]),
+    	in_list(Friends,[valya,_,_]),
+    	in_list(Friends,[natasha,_,_]),
+    
+    	in_list(Friends,[_,white,_]),
+    	in_list(Friends,[_,green,_]),
+    	in_list(Friends,[_,blue,_]),
+    
+    	in_list(Friends,[_,_,white]),
+    	in_list(Friends,[_,_,green]),
+    	in_list(Friends,[_,_,blue]),
+	    
+    	in_list(Friends,[natasha,_,green]),
+    	
+    	(in_list(Friends,[anya,green,green]);
+		in_list(Friends,[anya,white,white]);
+        in_list(Friends,[anya,blue,blue])),
+    	       
+    	not(in_list(Friends,[valya,white,_])),
+		not(in_list(Friends,[valya,_,white])),
+		not(in_list(Friends,[valya,white,white])),
+    	
+    	write(Friends).
