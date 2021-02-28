@@ -43,3 +43,6 @@ write("Enter list"), read_list(N,List), min_list_down(List,Min),
 write("Min element of list: "), write(Min),!.
 
 program_8:-write("List is empty").
+
+member(X,[X|T]):-!.
+member(X,[_|T]):-member(X,T).
