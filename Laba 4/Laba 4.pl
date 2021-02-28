@@ -19,3 +19,10 @@ write("Enter List"), read_list(N,List),nl,
 write("Enter Element: "), read(L),nl,
 list_el_numb(List,L,Numb), write(Numb),!;
 write("There is no Element").
+
+programmm:- write("Enter N: "), read(N),nl,
+write("Enter List"), read_list(N,List),nl,
+write("Enter Element's number: "), read(Numb),nl,
+list_el_numb(List,L,Numb), write(L),!.
+
+programm:- write("There is no Element with that number").
