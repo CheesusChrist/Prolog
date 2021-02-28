@@ -72,8 +72,8 @@ pr_ein2:- Hair=[_,_,_],
 pr_ein3:- Friends=[_,_,_],
     
     	in_list(Friends,[anya,_,_]),
-    	in_list(Friends,[valya,_,_]),
     	in_list(Friends,[natasha,_,_]),
+	in_list(Friends,[valya,_,_]),
     
     	in_list(Friends,[_,white,_]),
     	in_list(Friends,[_,green,_]),
@@ -92,5 +92,13 @@ pr_ein3:- Friends=[_,_,_],
     	not(in_list(Friends,[valya,white,_])),
 		not(in_list(Friends,[valya,_,white])),
 		not(in_list(Friends,[valya,white,white])),
+
+	not(in_list(Friends,[valya,green,green])),
+		not(in_list(Friends,[valya,white,white])),
+        not(in_list(Friends,[valya,blue,blue])),
+    	
+    	not(in_list(Friends,[natasha,green,green])),
+		not(in_list(Friends,[natasha,white,white])),
+        not(in_list(Friends,[natasha,blue,blue])),
     	
     	write(Friends).
