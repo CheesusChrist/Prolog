@@ -9,3 +9,7 @@ sum_ls_down([Head|Tail], CurSum, Sum) :- CurSum1 is CurSum + Head, sum_ls_down(T
 
 sum_ls_up([],0) :- !.
 sum_ls_up([Head|Tail], Sum) :- sum_ls_up(Tail,Sum1),Sum is (Sum1 + Head).
+
+list_el_numb([H|_],H,N,N):-!.
+list_el_numb([_|T],L,X,N):-X1 is X+1,list_el_numb(T,L,X1,N).
+list_el_numb(List,L,N):-list_el_numb(List,L,0,N).
