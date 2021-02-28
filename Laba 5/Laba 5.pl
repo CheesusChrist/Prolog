@@ -50,3 +50,20 @@ pr_ein:- Houses=[_,_,_,_,_],
 		write(Houses), nl,
 		write(WHO1), write(" drinks water"), nl,
     		write(WHO2), write(" has zebra"), nl.
+
+pr_ein2:- Hair=[_,_,_],  	
+    	               
+        in_list(Hair,[belokurov,_]),
+    	in_list(Hair,[chernov,_]),
+    	in_list(Hair,[rizhov,_]),
+                
+        in_list(Hair,[_,blond]),
+    	in_list(Hair,[_,brunet]),
+    	in_list(Hair,[_,red]),     
+    	
+    	not(in_list(Hair,[chernov,brunet])),
+    	not(in_list(Hair,[rizhov,red])),
+    	not(in_list(Hair,[belokurov,brunet])),
+    	not(in_list(Hair,[belokurov,blond])),
+
+        write(Hair).
