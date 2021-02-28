@@ -102,3 +102,26 @@ pr_ein3:- Friends=[_,_,_],
         not(in_list(Friends,[natasha,blue,blue])),
     	
     	write(Friends).
+
+%name, post, age, relatives
+pr_ein4:- Zavod = [_,_,_],
+    	
+    	in_list(Zavod,[_,slesar,younger,no]),
+    	in_list(Zavod,[borisov,_,_,yes]),
+    
+    	in_list(Zavod,[ivanov,_,_,_]),
+    	in_list(Zavod,[semenov,_,_,_]),
+    
+  		in_list(Zavod,[_,tokar,_,_]),
+   		in_list(Zavod,[_,svarshik,_,_]),
+    		
+    	in_list(Zavod,[_,_,older,_]),
+   		in_list(Zavod,[_,_,middle-aged,_]),
+    
+    	in_list(Zavod,[_,_,_,not-stated]),
+    	   
+    	not(in_list(Zavod,[_,tokar,older,_])),
+    	not(in_list(Zavod,[semenov,tokar,_,_])),
+    	not(in_list(Zavod,[semenov,_,younger,_])),
+    	  	   	
+    	write(Zavod).
