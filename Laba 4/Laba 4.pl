@@ -13,3 +13,9 @@ sum_ls_up([Head|Tail], Sum) :- sum_ls_up(Tail,Sum1),Sum is (Sum1 + Head).
 list_el_numb([H|_],H,N,N):-!.
 list_el_numb([_|T],L,X,N):-X1 is X+1,list_el_numb(T,L,X1,N).
 list_el_numb(List,L,N):-list_el_numb(List,L,0,N).
+
+program:-write("Enter N: "), read(N),nl,
+write("Enter List"), read_list(N,List),nl,
+write("Enter Element: "), read(L),nl,
+list_el_numb(List,L,Numb), write(Numb),!;
+write("There is no Element").
