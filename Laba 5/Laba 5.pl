@@ -180,3 +180,28 @@ pr_ein6:- Talents = [_,_,_,_],
    		not(in_list(Talents,[voronov,artist])),
     	    	   	
     	write(Talents).
+
+%name, nationality, sport
+pr_ein7:- Competition = [_,_,_],
+    	
+    	in_list(Competition,[simon,israel,_]),	
+    	in_list(Competition,[michael,_,basketball]),  	
+    	
+    	in_list(Competition,[richard,_,_]),
+    	
+    	in_list(Competition,[_,amerika,_]),
+    	in_list(Competition,[_,australia,_]),
+    
+    	in_list(Competition,[_,_,tennis]),
+    	in_list(Competition,[_,_,cricket]),
+    	
+    
+    	not(in_list(Competition,[michael,amerika,_])),
+    	not(in_list(Competition,[simon,_,tennis])),
+        
+    	in_list(Competition,[WHO1,australia,_]),
+		in_list(Competition,[richard,_,WHO2]),
+		write(Competition), nl,
+		write(WHO1), write(" is from Australia"), nl,
+    		write(WHO2), write(" is Richard's sport"), nl.
+
