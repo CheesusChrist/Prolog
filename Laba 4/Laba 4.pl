@@ -29,7 +29,7 @@ write("Enter List"), read_list(N,List),nl,
 write("Enter Element's number: "), read(Numb),nl,
 list_el_numb(List,L,Numb), write(L),!.
 
-programm:- write("There is no Element with that number").
+programmm:- write("There is no Element with that number").
 
 min_list_up([H], H):-!.
 min_list_up([H|T], Min):-min_list_up(T,Min1),(H < Min1 -> Min is H;Min is Min1).
