@@ -125,3 +125,30 @@ pr_ein4:- Zavod = [_,_,_],
     	not(in_list(Zavod,[semenov,_,younger,_])),
     	  	   	
     	write(Zavod).
+
+%name, drink, position
+pr_ein5:- Liquids = [_,_,_,_],
+    	
+    	in_list(Liquids,[bottle,_]),
+    	in_list(Liquids,[glass,_]),
+    	in_list(Liquids,[jug,_]),
+    	in_list(Liquids,[can,_]),
+    
+    	in_list(Liquids,[_,milk]),
+    	in_list(Liquids,[_,lemonade]),
+    	in_list(Liquids,[_,kvas]),
+    	in_list(Liquids,[_,water]),
+    	    
+		not(in_list(Liquids,[bottle,milk])),
+    	not(in_list(Liquids,[bottle,water])),
+    
+    	not(in_list(Liquids,[jug,lemonade])),
+    	not(in_list(Liquids,[jug,kvas])),
+    	
+    	not(in_list(Liquids,[can,lemonade])),
+    	not(in_list(Liquids,[can,water])),
+    
+    	not(in_list(Liquids,[glass,milk])),
+    	not(in_list(Liquids,[can,milk])),
+    	
+    	write(Liquids).
