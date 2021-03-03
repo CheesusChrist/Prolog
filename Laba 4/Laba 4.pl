@@ -47,7 +47,7 @@ program_8:-write("List is empty").
 member(X,[X|T]):-!.
 member(X,[_|T]):-member(X,T).
 
-reverse(L):-reverse(L,[],Answ).
+reverse(L,NewList):-reverse(L,[],NewList).
 reverse([],InvL,InvL):-!.
 reverse([H|T],CurList,InvL):-reverse(T,[H|CurList],InvL).
 
