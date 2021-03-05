@@ -67,3 +67,7 @@ remove_equal([H|T],X,[H|T1]):-remove_equal(T,X,T1).
 just_once([]):- !.
 just_once([H|T]):- not(member(H,T)), just_once(T).
 
+unique([],[]):-!.
+unique([H|T],T1):-member(H,T),unique(T,T1),!.
+unique([H|T],[H|T1]):-not(member(H,T)),unique(T,T1),!.
+
