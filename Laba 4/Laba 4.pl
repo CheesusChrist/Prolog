@@ -85,3 +85,14 @@ task1_11:-  write("Number of elements in list: "), read(N),nl,
     		(Y1 is 1 ->  Imposter is X1;Imposter is X2),
 			write("Imposter is "), write(Imposter).
 
+max_list_up([H], H):-!.
+max_list_up([H|T], Max):- max_list_up(T,Max1),(H > Max1 -> Max is H;Max is Max1).
+
+after_max(List,X):- after_max(List,[],X).
+after_max([H|T],NewList,NewList):- max_list_up([H|T],Max), H is Max,!.
+after_max([H|T],NewList,X):- append_element(NewList,[H],NewList1), after_max(T,NewList1,X).
+
+task1_21:- 	write("Number of elements in list: "), read(N),nl,
+			write("Enter list"), read_list(N,List), nl,
+    		reverse(List,NewList), after_max(NewList,X), reverse(X,BackAgain), write(BackAgain).
+
