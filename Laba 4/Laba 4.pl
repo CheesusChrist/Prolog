@@ -78,3 +78,10 @@ how_many(L,X,Y):-how_many(L,X,0,Y)
 length_list([],0):-!.
 length_list([_|T],X):-length_list(T,X1),X is (X1 + 1).
 
+task1_11:-  write("Number of elements in list: "), read(N),nl,
+			write("Enter list"), read_list(N,List), unique(List,List_uni), nl,
+    		list_el_numb(List_uni,X1,0), list_el_numb(List_uni,X2,1),
+    		how_many(List,X1,Y1), 
+    		(Y1 is 1 ->  Imposter is X1;Imposter is X2),
+			write("Imposter is "), write(Imposter).
+
