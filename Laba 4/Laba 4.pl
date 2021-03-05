@@ -71,3 +71,7 @@ unique([],[]):-!.
 unique([H|T],T1):-member(H,T),unique(T,T1),!.
 unique([H|T],[H|T1]):-not(member(H,T)),unique(T,T1),!.
 
+how_many([],_,N,N):-!.
+how_many([H|T],X,N,Y):- (H is X -> N1 is (N + 1),how_many(T,X,N1,Y);N1 is N,how_many(T,X,N1,Y)).
+how_many(L,X,Y):-how_many(L,X,0,Y)
+
