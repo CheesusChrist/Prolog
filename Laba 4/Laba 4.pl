@@ -102,3 +102,13 @@ task1_23:- 	write("Number of elements in list: "), read(N),nl,
     		remove_equal(List,Min1,List1), 
  			min_list_up(List1,Min2), write("Min2 is "), write(Min2), nl.
 
+make_positive(X,Pos):- (X<0 -> Pos is X*(-1); Pos is X).
+
+closest([H],R,Min,X):- Razn is R-H, make_positive(Razn,Min), X is H.
+closest([H|T],R,Min,X1):-closest(T,R,Min,X),  Razn is R-H, make_positive(Razn, Razn1),
+    		((Min>Razn1)->Min1 is Razn1,X1 is H;Min1 is Min,X1 is X). 
+
+task1_35:-	write("Write R: "), read(R),nl,
+    		write("Number of elements in list: "), read(N),nl,
+			write("Enter list"), read_list(N,List), nl,
+    		closest(List,R,Min,X), write("Elem is "), write(X).
