@@ -75,3 +75,6 @@ how_many([],_,N,N):-!.
 how_many([H|T],X,N,Y):- (H is X -> N1 is (N + 1),how_many(T,X,N1,Y);N1 is N,how_many(T,X,N1,Y)).
 how_many(L,X,Y):-how_many(L,X,0,Y)
 
+length_list([],0):-!.
+length_list([_|T],X):-length_list(T,X1),X is (X1 + 1).
+
