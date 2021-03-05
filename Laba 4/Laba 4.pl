@@ -112,3 +112,10 @@ task1_35:-	write("Write R: "), read(R),nl,
     		write("Number of elements in list: "), read(N),nl,
 			write("Enter list"), read_list(N,List), nl,
     		closest(List,R,Min,X), write("Elem is "), write(X).
+
+positive_sum([],0) :- !.
+positive_sum([H|T], Sum) :- positive_sum(T,Sum1), make_positive(H,Pos),  Sum is (Sum1 + Pos).
+
+task1_41:-	write("Number of elements in list: "), read(N),nl,
+			write("Enter list"), read_list(N,List), nl,
+			positive_sum(List, Sum), write("Sredn is "), S is (Sum/N), write(S), nl.
