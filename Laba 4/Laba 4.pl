@@ -96,3 +96,9 @@ task1_21:- 	write("Number of elements in list: "), read(N),nl,
 			write("Enter list"), read_list(N,List), nl,
     		reverse(List,NewList), after_max(NewList,X), reverse(X,BackAgain), write(BackAgain).
 
+task1_23:- 	write("Number of elements in list: "), read(N),nl,
+			write("Enter list"), read_list(N,List), nl,
+    		min_list_up(List,Min1), write("Min1 is "), write(Min1), nl,   
+    		remove_equal(List,Min1,List1), 
+ 			min_list_up(List1,Min2), write("Min2 is "), write(Min2), nl.
+
