@@ -126,3 +126,23 @@ zero([H|T],Zero):-zero_after([H|T],0,Zero).
 
 task7:- write("Write str: "),nl,read_str(List),nl,count(List,Plus,Minus), write("Plus = "),write(Plus),nl,
 write("Minus = "), write(Minus), nl, write("Zero = "), zero(List,Zero), write(Zero),nl.
+
+find_w_elem([],_,NumbW):-NumbW is (-1),!.
+find_w_elem(_,_,NumbW):-not(NumbW is -1),!.
+find_w_elem([H|T],CurNumb,NumbW):-((H is 119)->NumbW is CurNumb;CurNumb1 is CurNumb+1,
+                                   find_w_elem(T,CurNumb1,NumbW)).
+find_w(List,NumbW):-find_w_elem(List,0,NumbW).
+
+find_x_elem([],_,NumbX):-NumbX is (-1),!.
+find_x_elem(_,_,NumbX):-not(NumbX is -1),!.
+find_x_elem([H|T],CurNumb,NumbX):-((H is 120)->NumbX is CurNumb;CurNumb1 is CurNumb+1,
+                                   find_x_elem(T,CurNumb1,NumbX)).
+find_x(List,NumbX):-find_x_elem(List,0,NumbX).
+
+check_wx(NumbW,NumbX):-NumbW is NumbX, write("There is no 'w' or 'x' in line").
+check_wx(NumbW,NumbX):-NumbW is -1, not(NumbX is -1), write("There is no 'w' in line").
+check_wx(NumbW,NumbX):-not(NumbW is -1), NumbX is -1, write("There is no 'x' in line").
+check_wx(NumbW,NumbX):-not(NumbW is -1), not(NumbX is -1),((NumbW < NumbX)->write("W occurs earlier");
+                                                       write("X occurs earlier")).
+
+task8:- write("Write str: "),nl,read_str(List),nl, find_w(List,NumbW), find_x(List,NumbX), nl, check_wx(NumbW,NumbX).
