@@ -106,3 +106,10 @@ write_a(List,Elem):-write_all(List,0,Elem).
 task5:-write("Write str: "),nl,read_str(List),length_list(List,Length),nl,Length1 is Length-1,
 list_el_numb(List,Elem,Length1), write("Last elem is "), write(Elem), nl, write("Numbers are "),
 write_a(List,Elem).
+
+show_three([],_):-!.
+show_three([H|T],CurNum):-((0 is CurNum mod 3)->write(H),write(" "),CurNum1 is CurNum+1;
+                          CurNum1 is CurNum+1), show_three(T,CurNum1).
+show([H|T]):-show_three([H|T],1).
+
+task6:-write("Write str: "),nl,read_str(List),nl,show(List).
