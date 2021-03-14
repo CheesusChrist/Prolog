@@ -146,3 +146,17 @@ check_wx(NumbW,NumbX):-not(NumbW is -1), not(NumbX is -1),((NumbW < NumbX)->writ
                                                        write("X occurs earlier")).
 
 task8:- write("Write str: "),nl,read_str(List),nl, find_w(List,NumbW), find_x(List,NumbX), nl, check_wx(NumbW,NumbX).
+
+check_length(L1,L2,Razn,_):-L1 is L2, Razn is 0.
+check_length(L1,L2,Razn,1):-L1 > L2, Razn is L1-L2.
+check_length(L1,L2,Razn,2):-L1 < L2, Razn is L2-L1.
+
+repeat_line(_,Num,Num):-!.
+repeat_line(Larger,CurNum,Num):-write_str(Larger),nl, CurNum1 is CurNum+1, repeat_line(Larger,CurNum1,Num).
+repeat_l(Larger,Num):-repeat_line(Larger,0,Num).
+
+
+task9:-write("Write str1: "),nl,read_str(List1),length_list(List1,Length1),
+       write("Write str2: "),nl,read_str(List2),length_list(List2,Length2),
+       check_length(Length1,Length2,Razn,Larger),
+       ((Razn is 0)->write("Line1 length = Line2 length");((Larger is 1)->repeat_l(List1,Razn);repeat_l(List2,Razn))).
