@@ -113,3 +113,16 @@ show_three([H|T],CurNum):-((0 is CurNum mod 3)->write(H),write(" "),CurNum1 is C
 show([H|T]):-show_three([H|T],1).
 
 task6:-write("Write str: "),nl,read_str(List),nl,show(List).
+
+count_plus_minus([],Plus,Minus,Plus,Minus):-!.
+count_plus_minus([H|T],Plus,Minus,X,Y):-((H is 43)->Plus1 is Plus + 1;Plus1 is Plus),
+((H is 45)->Minus1 is Minus + 1;Minus1 is Minus), count_plus_minus(T,Plus1,Minus1,X,Y).
+
+count([H|T],Plus,Minus):-count_plus_minus([H|T],0,0,Plus,Minus).
+
+zero_after([_],Zero,Zero):-!.
+zero_after([H|T],Zero,X):-((H is 48)->Zero1 is Zero + 1;Zero1 is Zero), zero_after(T,Zero1,X).
+zero([H|T],Zero):-zero_after([H|T],0,Zero).
+
+task7:- write("Write str: "),nl,read_str(List),nl,count(List,Plus,Minus), write("Plus = "),write(Plus),nl,
+write("Minus = "), write(Minus), nl, write("Zero = "), zero(List,Zero), write(Zero),nl.
