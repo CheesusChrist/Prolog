@@ -78,3 +78,22 @@ task3:- write("Write str: "),read_str(List),
 	write("Max count word: "),
 	max_word(UniListWord,ListWord,Word),
 	write_str(Word).
+
+length_list([],0):-!.
+length_list([_|T],X):-length_list(T,X1),X is (X1 + 1).
+
+list_el_numb([H|_],H,N,N):-!.
+list_el_numb([_|T],L,X,N):-X1 is X+1,list_el_numb(T,L,X1,N).
+list_el_numb(List,L,N):-list_el_numb(List,L,0,N).
+
+append_element([], X, X).
+append_element([H|T1], X, [H|T2]) :- append_element(T1, X, T2).
+
+
+repeat(_, Length, Length):-!.
+repeat(Elem, CurNum, Length):-write(Elem), write(" "),CurNum1 is CurNum+1, repeat(Elem,CurNum1,Length).
+rep(Elem,Length):-repeat(Elem,0,Length).
+
+task4:-write("Write str: "),nl,read_str(List),length_list(List,Length),nl,Length1 is Length-1, nl,
+((Length>5)->list_el_numb(List,E0,0),list_el_numb(List,E1,1),list_el_numb(List,E2,2), Length2 is Length-2,
+ Length3 is Length-3, list_el_numb(List,E3,Length3),list_el_numb(List,E4,Length2),list_el_numb(List,E5,Length1), append_element([E0,E1,E2,E3,E4,E5],[],NewNewList),write_str(NewNewList); list_el_numb(List,E6,0), rep(E6,Length)).
