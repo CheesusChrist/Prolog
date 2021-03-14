@@ -97,3 +97,12 @@ rep(Elem,Length):-repeat(Elem,0,Length).
 task4:-write("Write str: "),nl,read_str(List),length_list(List,Length),nl,Length1 is Length-1, nl,
 ((Length>5)->list_el_numb(List,E0,0),list_el_numb(List,E1,1),list_el_numb(List,E2,2), Length2 is Length-2,
  Length3 is Length-3, list_el_numb(List,E3,Length3),list_el_numb(List,E4,Length2),list_el_numb(List,E5,Length1), append_element([E0,E1,E2,E3,E4,E5],[],NewNewList),write_str(NewNewList); list_el_numb(List,E6,0), rep(E6,Length)).
+
+write_all([],_,_):-!.
+write_all([H|T],CurNum,Elem):-((H is Elem)->write(CurNum),write(" "),CurNum1 is CurNum+1;CurNum1 is CurNum+1),
+write_all(T,CurNum1,Elem).
+write_a(List,Elem):-write_all(List,0,Elem).
+
+task5:-write("Write str: "),nl,read_str(List),length_list(List,Length),nl,Length1 is Length-1,
+list_el_numb(List,Elem,Length1), write("Last elem is "), write(Elem), nl, write("Numbers are "),
+write_a(List,Elem).
