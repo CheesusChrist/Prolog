@@ -49,3 +49,32 @@ get_words(_,B,B,K,K).
 
 count_words(List,Count):-count_words(List,0,Count).
 task2:- write("Write str: "),nl,read_str(List),write("Count words: "),count_words(List,Count),write(Count).
+
+member_list([X|_],X):-!.
+member_list([_|T],X):-member_list(T,X).
+
+unique([],[]):-!.
+unique([H|T],T1):-member(H,T),unique(T,T1),!.
+unique([H|T],[H|T1]):-not(member(H,T)),unique(T,T1),!.
+
+kolEl([],_,N,N):-!.
+kolEl([H|T],X,N,Count):- (H = X -> N1 is (N + 1), kolEl(T,X,N1,Count);N1 is N, kolEl(T,X,N1,Count)).
+kolEl([H|T],X,Count):-kolEl([H|T],X,0,Count).
+
+max_word([],_,_,CurWord,CurWord):-!.
+max_word([H|T],ListWord,CurCount,CurWord,Word):- kolEl(ListWord,H,CountH),(CountH > CurCount->(CurCount1 is CountH,CurWord1 = H);(CurCount1 is CurCount, CurWord1 = CurWord)),
+	max_word(T,ListWord,CurCount1,CurWord1,Word).
+max_word(UniListWord,ListWord,Word):-max_word(UniListWord,ListWord,0,[],Word).
+
+write_list([]) :- !.
+write_list([H|T]) :- write(H), write(" "), write_list(T).
+
+task3:- write("Write str: "),read_str(List),
+	count_words(List,CountW),
+	get_words(List,ListWord,CountW),
+	write("List words: "),write(ListWord),nl,
+	unique(ListWord,UniListWord),
+	write("Unique list words: "), write(UniListWord),nl,
+	write("Max count word: "),
+	max_word(UniListWord,ListWord,Word),
+	write_str(Word).
