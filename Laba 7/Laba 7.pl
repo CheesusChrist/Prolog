@@ -120,9 +120,9 @@ count_plus_minus([H|T],Plus,Minus,X,Y):-((H is 43)->Plus1 is Plus + 1;Plus1 is P
 
 count([H|T],Plus,Minus):-count_plus_minus([H|T],0,0,Plus,Minus).
 
-zero_after([_],Zero,Zero):-!.
+zero_after([],Zero,Zero):-!.
 zero_after([H|T],Zero,X):-((H is 48)->Zero1 is Zero + 1;Zero1 is Zero), zero_after(T,Zero1,X).
-zero([H|T],Zero):-zero_after([H|T],0,Zero).
+zero([_|T],Zero):-zero_after(T,0,Zero).
 
 task7:- write("Write str: "),nl,read_str(List),nl,count(List,Plus,Minus), write("Plus = "),write(Plus),nl,
 write("Minus = "), write(Minus), nl, write("Zero = "), zero(List,Zero), write(Zero),nl.
