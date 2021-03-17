@@ -160,3 +160,15 @@ task9:-write("Write str1: "),nl,read_str(List1),length_list(List1,Length1),
        write("Write str2: "),nl,read_str(List2),length_list(List2,Length2),
        check_length(Length1,Length2,Razn,Larger),
        ((Razn is 0)->write("Line1 length = Line2 length");((Larger is 1)->repeat_l(List1,Razn);repeat_l(List2,Razn))).
+
+%task 10
+
+del_number(0,[_|T],T):- !.
+del_number(X,[Head|T1],[Head|T2]) :- X1 is X-1,del_number(X1,T1,T2).
+
+check_abc([H1,H2,H3|_],Flag):-((H1 is 97, H2 is 98, H3 is 99)-> Flag is 1;Flag is 0).
+
+task10:-write("Write str: "),nl,read_str(List),check_abc(List,Flag),
+((Flag is 1)->del_number(0,List,ListDel1), del_number(0,ListDel1,ListDel2),
+del_number(0,ListDel2,ListDel3),append_element([119,119,119],ListDel3,ListNew),write_str(ListNew);
+append_element(List,[122,122,122],ListNewNew),write_str(ListNewNew)).
