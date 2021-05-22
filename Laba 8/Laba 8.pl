@@ -114,6 +114,17 @@ remove_str([H|T], Temp, List, X, 1):-(H=X-> remove_str(T, Temp,List,X, 0)),!.
 remove_str([H|T], Temp, List, X, 1):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
 remove_str([H|T], Temp, List, X, 0):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
 
+%__6__
+pr6:-see('aead_list_str(List,_),seen,kol_slov_str(List, L),sort1(List, L,[]).
+
+kol_slov_str(A,L):-kol_slov_str(A,[],L),!.
+kol_slov_str([],L, L):-!.
+kol_slov_str([H|T], L_, L):-list_wordskol(H,LW,0,Kolvo),append1(L_,[Kolvo],L1),kol_slov_str(T,L1,L).
+
+list_wordskol(A,LW,_,K):-append1([32],A,A1),reverse(A1,AR),list_wordskol(AR,[],LW,[],K,0).
+list_wordskol([],LW,LW,_,K,K):-!.
+list_wordskol([H|T],LW,LWN,W,Kolvo,K):-((H=32; H=10) -> append([W],LW,LW1), K1 is K+1,list_wordskol(T,LW1,LWN,[],Kolvo, K1);
+append1([H],W,W1),list_wordskol(T,LW,LWN,W1,Kolvo,K)).
 
 
 
