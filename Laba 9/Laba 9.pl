@@ -41,3 +41,9 @@ sub_set([H|Sub_set],[H|Set]):-sub_set(Sub_set,Set).
 sub_set(Sub_set,[H|Set]):-sub_set(Sub_set,Set).
 pr_subset:-read_str(A,N),sub_set(B,A),write_str(B),nl,fail.
 
+%1.5
+sochet([],0,_):-!.
+sochet([H|Sub_set],K,[H|Set]):-K1 is K-1,sochet(Sub_set,K1,Set).
+sochet(Sub_set,K,[_|Set]):-sochet(Sub_set,K,Set).
+pr_sochet:-read_str(A,N),read(K),sochet(B,K,A),write_str(B),nl,fail.
+
