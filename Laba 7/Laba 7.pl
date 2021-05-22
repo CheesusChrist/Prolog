@@ -55,3 +55,9 @@ index_end:-read_str(Sr,_),reverse(Sr,[H|_]),EndS = H,list_el(Sr,EndS).
 list_el([H|T],El):-list_el([H|T],El,0).
 list_el([],_,_):-!.
 list_el([H|T],El,Index):-Index1 is Index+1,(H = El-> write(Index1),write(" "),list_el(T,El,Index1);list_el(T,El,Index1)).
+
+%task 6
+third_el:-read_str(A,_), thirdel(A,0).
+thirdel([],_):-!.
+thirdel([H|T],Index):-Index1 is Index+1,(0 is Index1 mod 3 -> put(H),write(" "),thirdel(T,Index1);thirdel(T,Index1)).
+
