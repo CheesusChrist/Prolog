@@ -79,5 +79,24 @@ proverka(_,[]):-true,!.
 proverka(AllListWord,[H|T]):-kol_repeat_in_list(AllListWord,H,KolPovt),KolPovt<2,proverka(AllListWord,T),!.
 proverka(AllListWord,[H|T]):-!,fail.
 
+%__3__
+pr3_:-see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_str(List,_,1),seen,append(List,[32],A1),date_time(A1).
+
+date_time([]):-!.
+date_time([32|Tail]):-date_time(Tail),!.
+date_time([Head|Tail]):-(day([Head|Tail],[],Day,After_Day)->(month(After_Day,[],Month,After_Month)->(year(After_Month,[],Year,After_Year)->
+write_str(Day),write(" "),write_str(Month),write(" "),write_str(Year),nl,date_time(After_Year);date_time(After_Month)); date_time(After_Day));date_time(Tail)).
+
+day([32|Tail],Day,Day,Tail):-!.
+day([Head|Tail],I,Day,After_Day):-Head >=48,Head =<57,append(I,[Head],I1),day(Tail,I1,Day,After_Day),!.
+day([_|_],_,_,_):-!,false.
+
+month([32|Tail],Month,Month,Tail):-!.
+month([Head|Tail],I,Month,After_Month):-Head >=97,Head =<122,append(I,[Head],I1),month(Tail,I1,Month,After_Month),!.
+month([_|_],_,_,_):-!,false.
+
+year([32|Tail],Year,Year,Tail):-!.
+year([Head|Tail],I,Year,After_Year):-Head >=48,Head =<57,append(I,[Head],I1),year(Tail,I1,Year,After_Year),!.
+year([_|_],_,_,_):-!,false.
 
 
