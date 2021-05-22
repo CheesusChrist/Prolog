@@ -125,4 +125,10 @@ word([119,111,114,100|T],Temp,N):-append1(Temp,[108,101,116,116,101,114],Temp1),
     word(T,Temp1,N),!.
 word([H|T],Temp,N):-append1(Temp,[H],Temp1),word(T,Temp1,N),!.
 
+%task 17
+xabc:-read_str(Stroka,_), del(Stroka,[],List), write_str(List).
+del([],List,List):-!.
+del([120,97,98,99|T],Temp,List):-append1(Temp,[97,98,99],Temp1), del(T,Temp1,List),!.
+del([H|T],Temp,List):-append1(Temp,[H],Temp1),del(T,Temp1,List).
+
 
