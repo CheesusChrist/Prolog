@@ -61,3 +61,17 @@ third_el:-read_str(A,_), thirdel(A,0).
 thirdel([],_):-!.
 thirdel([H|T],Index):-Index1 is Index+1,(0 is Index1 mod 3 -> put(H),write(" "),thirdel(T,Index1);thirdel(T,Index1)).
 
+% task 7
+kol_zero([_|[]],Zero,Zero):-!.
+kol_zero([_|[H2|T]],KZero,KolZero):-(H2=48 -> KZero1 is KZero+1,
+kol_zero([H2|T],KZero1,KolZero);kol_zero([H2|T],KZero,KolZero)).
+
+kol_p_m:-read_str(Stroka,_),kol_p_m(Stroka,0,Plus,0,Minus),kol_zero(Stroka,0,Zero),
+    write("Plus = "),write(Plus),nl,write("Minus = "),write(Minus),nl,write("Zero = "),write(Zero),!.
+kol_p_m([],Plus,Plus,Minus,Minus):-!.
+kol_p_m([43|T],Plus,KolP,Minus,KolM):-Plus1 is Plus+1,
+    kol_p_m(T,Plus1,KolP,Minus,KolM).
+kol_p_m([45|T],Plus,KolP,Minus,KolM):-Minus1 is Minus+1,
+    kol_p_m(T,Plus,KolP,Minus1,KolM).
+kol_p_m([_|T],Plus,KolP,Minus,KolM):-kol_p_m(T,Plus,KolP,Minus,KolM).
+
