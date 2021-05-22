@@ -127,4 +127,18 @@ list_wordskol([H|T],LW,LWN,W,Kolvo,K):-((H=32; H=10) -> append([W],LW,LW1), K1 i
 append1([H],W,W1),list_wordskol(T,LW,LWN,W1,Kolvo,K)).
 
 
+%__7__
+pr7:-see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_list_str(List,_),seen,del_chisla(List, List1),kol_slov_str(List1, L),sort1(List1, L,[]).
+
+del_chisla([],A,A):-!.
+del_chisla(A,B):-del_chisla(A,B,[]).
+del_chisla([H|T],L,A):-del_(H,List),append(A,[List],B),del_chisla(T, L,B),!.
+
+del_([H|T],List):-del_([H|T],[],List, 1),!.
+del_([],List,List,0):-!.
+del_([H|T], Temp, List,1):-(H>47, H<58-> del_(T, Temp,List,0)),!.
+del_([H|T], Temp, List,0):-(H>47, H<58-> del_(T, Temp,List,0)),!.
+del_([H|T], Temp, List,0):-append1(Temp,[H], Temp1), del_(T, Temp1, List,0),!.
+del_([H|T], Temp, List,1):-del_(T, Temp, List,1),!.
+
 
