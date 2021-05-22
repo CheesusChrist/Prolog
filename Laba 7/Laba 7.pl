@@ -96,3 +96,9 @@ abc_check:-read_str(Stroka,_), find(Stroka).
 find([H1,H2,H3|T]):-(H1=97, H2=98, H3=99 -> write_str([119,119,119|T]);append1([H1,H2,H3|T], [122,122,122], Str), write_str(Str)).
 
 
+%task 11
+o_str:-read_str(Stroka, N), check(Stroka, N).
+check(A,N):-(N>10-> Str=[_,_,_,_,_,_],append1(Str,_,A), write_str(Str);N1 is 6-N, plus(A,N1)).
+plus(A,0):-write_str(A),!.
+plus(A,N):-N1 is N-1, append1(A,[111], Str), plus(Str,N1).
+
