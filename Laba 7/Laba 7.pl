@@ -50,3 +50,8 @@ pr4([H1|[H2|[H3|_]]]):-put(H1),put(H2),put(H3),!.
 pr4([_|_],0):-!.
 pr4([H|T],Length):-put(H),L1 is Length-1,pr4([H|T],L1).
 
+%task 5
+index_end:-read_str(Sr,_),reverse(Sr,[H|_]),EndS = H,list_el(Sr,EndS).
+list_el([H|T],El):-list_el([H|T],El,0).
+list_el([],_,_):-!.
+list_el([H|T],El,Index):-Index1 is Index+1,(H = El-> write(Index1),write(" "),list_el(T,El,Index1);list_el(T,El,Index1)).
