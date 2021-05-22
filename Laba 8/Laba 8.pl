@@ -39,4 +39,16 @@ space([],K,K):-!.
 space([H|T], K, Kolvo):-not(in_list(H,32)),K1 is K+1, space(T, K1, Kolvo),!.
 space([_|T], K, Kolvo):-space(T, K, Kolvo),!.
 
+%__1_3__
+pr8_3:- see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_list_str(List,N),seen,all_symbol(N,0,K),write("Number of all symbols  "),write(K), nl,symbols(List,0,Kol),write("Number of symbols A-a  "),write(Kol),nl, Sr is K div Kol,write(Sr), nl, vyvedi(List,Sr).
+all_symbol([],K, K):-!.
+all_symbol([H|T], Kolvo, K):-Kolvo1 is Kolvo +H, all_symbol(T, Kolvo1, K).
+symbols([],K, K):-!.
+symbols([H|T], Kol, Kolvo):-symbols_a(H,0,K),Kol1 is Kol+K,symbols(T, Kol1, Kolvo),!.
+symbols_a([],K, K):-!.
+symbols_a([H|T], K, Kolvo):-(H==97,K1 is K+1,symbols_a(T, K1, Kolvo));(H==65,K1 is K+1,symbols_a(T, K1, Kolvo));(symbols_a(T, K, Kolvo)).
+vyvedi([],_):-!.
+vyvedi([H|T], Sr):-(symbols_a(H,0,K),K>Sr-> write_str(H),vyvedi(T, Sr);vyvedi(T, Sr)).
+
+
 
