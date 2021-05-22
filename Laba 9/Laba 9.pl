@@ -86,3 +86,13 @@ aa_razm_:-make_ar(5,Pos),sochet(Pos_a,2,Pos),put_pos(Word,Pos_a,[97]),
 		 in_free_pos(Word,S3),
 		 write_str(Word),nl,fail.
 
+%4
+ss_razm:-tell('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_9/Out.txt'),not(ss_razm_),told.
+ss_razm_:-make_ar(5,Pos),sochet(Pos_s,2,Pos),in_list([97,98,99,100,101,102],Simbol),put_pos(Word,Pos_s,[Simbol]),in_list_exlude([97,98,99,100,101,102],Simbol,List),
+		 in_list_exlude(List,S1,NList),
+		 in_free_pos(Word,S1),
+		 in_list_exlude(NList,S2,NList1),
+		 in_free_pos(Word,S2),
+		 in_list_exlude(NList1,S3,NList2),
+		 in_free_pos(Word,S3),
+		 write_str(Word),nl,fail.
