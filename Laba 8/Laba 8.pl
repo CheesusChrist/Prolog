@@ -68,5 +68,16 @@ kol_repeat_in_list([H|T],X,K,Kol):-(H=X -> K1 is K+1,kol_repeat_in_list(T,X,K1,K
 often_word_in_list([],Word,Word,Kol,Kol):-!.
 often_word_in_list([H|T],W,Word,K,Kol):-kol_repeat_in_list([H|T],H,K1),(K1>K -> Kol1 = K1,W1=H,often_word_in_list(T,W1,Word,K1,Kol1);often_word_in_list(T,W,Word,K,Kol)).
 
+%__1_5__
+pr8_5:-see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_str(A,_,1),seen,tell('c:/Users/Aeeoi?ey/Documents/GitHub/Prolog1/Lab_8/Out.txt'),list_words_all_file(A,[],ListWordAllFile), proverka_(ListWordAllFile,ListWordAllFile),told.
+
+proverka_(_,[]):-!.
+proverka_(ListWordAllFile,[H|T]):- list_words(H,ListWordInStr),
+					proverka(ListWordAllFile,ListWordInStr),write_str(H),nl,proverka_(ListWordAllFile,T),!.
+proverka_(ListWordAllFile,[_|T]):-proverka_(ListWordAllFile,T).
+proverka(_,[]):-true,!.
+proverka(AllListWord,[H|T]):-kol_repeat_in_list(AllListWord,H,KolPovt),KolPovt<2,proverka(AllListWord,T),!.
+proverka(AllListWord,[H|T]):-!,fail.
+
 
 
