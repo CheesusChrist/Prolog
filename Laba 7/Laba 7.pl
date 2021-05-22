@@ -137,3 +137,9 @@ abc_numb([],List,List):-!.
 abc_numb([97,98,99,H|T],Buffer,NL):-H>47,H<58,abc_numb([H|T],Buffer,NL),!.
 abc_numb([H|T],Buffer,NL):-append1(Buffer,[H],BufferN),abc_numb(T,BufferN,NL).
 
+%task 19
+aba:-read_str(Stroka,_),aba(Stroka,0,Kol),write(Kol).
+aba([],Kol, Kol):-!.
+aba([97,98,97|T],N,Kol):-N1 is N+1 ,aba(T,N1,Kol),!.
+aba([_|T],N,Kol):-aba(T,N,Kol).
+
