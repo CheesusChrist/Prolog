@@ -91,3 +91,8 @@ write_str_n(_,0):-!.
 write_str_n(A,N):-write_str(A), nl, N1 is N-1, write_str_n(A, N1).
 big_st:-read_str(Stroka1,N1), read_str(Stroka2, N2), (N1>N2->N3 is N1-N2, write_str_n(Stroka1, N3); N3 is N2-N1, write_str_n(Stroka2, N3)).
 
+%task 10
+abc_check:-read_str(Stroka,_), find(Stroka).
+find([H1,H2,H3|T]):-(H1=97, H2=98, H3=99 -> write_str([119,119,119|T]);append1([H1,H2,H3|T], [122,122,122], Str), write_str(Str)).
+
+
