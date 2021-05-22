@@ -33,3 +33,10 @@ reverse([H|T],Z,Acc) :- reverse(T,Z,[H|Acc]).
 %__1_1__
 pr8_1:- see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_list_str(List, Lenght),seen,max(Lenght, Max), write(Max).
 
+%__1_2__
+pr8_2:- see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_list_str(List,_), seen, space(List, 0, Kolvo),write(Kolvo).
+space([],K,K):-!.
+space([H|T], K, Kolvo):-not(in_list(H,32)),K1 is K+1, space(T, K1, Kolvo),!.
+space([_|T], K, Kolvo):-space(T, K, Kolvo),!.
+
+
