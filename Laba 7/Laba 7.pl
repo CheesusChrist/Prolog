@@ -42,3 +42,11 @@ often_word_in_list:-read_str(A,_),append1([32],A,A1),reverse(A1,AR),list_words(A
 often_word_in_list([],Word,Word,Kol,Kol):-!.
 often_word_in_list([H|T],W,Word,K,Kol):-kol_repeat_in_list([H|T],H,K1),(K1>K -> Kol1 = K1,W1=H,often_word_in_list(T,W1,Word,K1,Kol1);often_word_in_list(T,W,Word,K,Kol)).
 
+%task 4
+pr4:-read_str(A,Length),(Length>5 -> pr4(A),reverse(A,AR),pr42(AR);
+	   concl(A,Length)).
+pr42([H1|[H2|[H3|_]]]):-put(H3),put(H2),put(H1),!.
+pr4([H1|[H2|[H3|_]]]):-put(H1),put(H2),put(H3),!.
+pr4([_|_],0):-!.
+pr4([H|T],Length):-put(H),L1 is Length-1,pr4([H|T],L1).
+
