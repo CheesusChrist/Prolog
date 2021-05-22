@@ -47,3 +47,31 @@ sochet([H|Sub_set],K,[H|Set]):-K1 is K-1,sochet(Sub_set,K1,Set).
 sochet(Sub_set,K,[_|Set]):-sochet(Sub_set,K,Set).
 pr_sochet:-read_str(A,N),read(K),sochet(B,K,A),write_str(B),nl,fail.
 
+%2
+make_ar(0,[]):-!.
+make_ar(K,[K|Tail]):-K1 is K-1,make_ar(K1,Tail).
+
+aa_razm_p:-tell('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_9/Out.txt'),not(aa_razm_P),nl,told.
+aa_razm_P:-make_ar(5,Pos),sochet(Pos_a,2,Pos),put_pos(Word,Pos_a,[97]),
+		 in_list([98,99,100,101,102],S1),
+		 in_free_pos(Word,S1),
+		 in_list([98,99,100,101,102],S2),
+		 in_free_pos(Word,S2),
+		 in_list([98,99,100,101,102],S3),
+		 in_free_pos(Word,S3),
+		 write_str(Word),nl,fail.
+put_pos(Word,[Head1,Head2],[Sim]):-select_pos(Word,Head1,Sim),
+    select_pos(Word,Head2,Sim).
+
+select_pos(Word,Head,Sim):-(Head is 1->Word=[Sim,_,_,_,_],!),
+    (Head is 2->Word=[_,Sim,_,_,_],!);
+    (Head is 3->Word=[_,_,Sim,_,_],!);
+    (Head is 4->Word=[_,_,_,Sim,_],!);
+    (Head is 5->Word=[_,_,_,_,Sim]).
+
+in_free_pos([H1,H2,H3,H4,H5],Sim):-(var(H1)->H1 is Sim),!;
+(var(H2)->H2 is Sim),!;
+(var(H3)->H3 is Sim),!;
+(var(H4)->H4 is Sim),!;
+(var(H5)->H5 is Sim).
+
