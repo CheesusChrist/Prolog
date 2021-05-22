@@ -162,3 +162,10 @@ splitting([],_,LastWord,LW,ListWord):-append1(LW,[LastWord],ListWord),!.
 splitting([H|T],List2,TempWord,LW,ListWord):-not(in_list(List2,H)),append1(TempWord,[H],TempWordN),splitting(T,List2,TempWordN,LW,ListWord),!.
 splitting([H1|T],List2,TempWord,LW,ListWord):-append1(LW,[TempWord],NLW),splitting(T,List2,[],NLW,ListWord).
 
+%task 22
+p22:-read_str(St,Length),print_sr(St),print_sr(St,Length),!.
+print_sr([H|T]):-write("First = "),put(H),nl,reverse([H|T],[HR|_]),write("End = "),put(HR),nl,!.
+print_sr(List,Length):-not(0 is Length mod 2),L is Length div 2+1,index(List,El,L,0),write("Middle = "),put(El),!.
+
+index([H|T],El,Num):-index([H|T],El,Num,0).
+index([H|T],El,Num,K):-K1 is K+1,(H = El,Num = K1 -> !;index(T,El,Num,K1)).
