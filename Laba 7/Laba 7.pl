@@ -75,3 +75,13 @@ kol_p_m([45|T],Plus,KolP,Minus,KolM):-Minus1 is Minus+1,
     kol_p_m(T,Plus,KolP,Minus1,KolM).
 kol_p_m([_|T],Plus,KolP,Minus,KolM):-kol_p_m(T,Plus,KolP,Minus,KolM).
 
+%task 8
+list_el_num([H|T],El,Num):-list_el_num([H|T],El,Num,0).
+list_el_num([],119,0,_):-write("w no found"),nl,!.
+list_el_num([],120,0,_):-write("x no found"),nl,!.
+list_el_num([],_,0,_):-!.
+list_el_num([H|T],El,Num,Chet):-Chet1 is Chet+1,(H = El,
+			Num = Chet1 -> !;list_el_num(T,El,Num,Chet1)).
+
+find_w:-read_str(St,_),findw(St).
+findw(St):-list_el_num(St,119,N1),list_el_num(St,120,N2),(N1<N2-> write("Found: "),put(119),nl; write("Found: "),put(120)).
