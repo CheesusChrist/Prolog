@@ -102,3 +102,9 @@ check(A,N):-(N>10-> Str=[_,_,_,_,_,_],append1(Str,_,A), write_str(Str);N1 is 6-N
 plus(A,0):-write_str(A),!.
 plus(A,N):-N1 is N-1, append1(A,[111], Str), plus(Str,N1).
 
+%task 13
+zamena:-read_str(Stroka,_),zamena(Stroka,0,[],NewSt),reverse(NewSt,R),write_str(R).
+zamena([],_,St,St):-!.
+zamena([H|T],Counter,NewSt,NStr):-Counter1 is Counter+1,0 is Counter1 mod 2,(H\=97,H\=98-> append1([97],NewSt,NSt1),zamena(T,Counter1,NSt1,NStr),!;append1([99],NewSt,NSt1),zamena(T,Counter1,NSt1,NStr)),!.
+zamena([H|T],Counter,NewSt,NStr):-Counter1 is Counter+1,append1([H],NewSt,NSt1),zamena(T,Counter1,NSt1,NStr).
+
