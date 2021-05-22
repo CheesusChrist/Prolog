@@ -99,4 +99,21 @@ year([32|Tail],Year,Year,Tail):-!.
 year([Head|Tail],I,Year,After_Year):-Head >=48,Head =<57,append(I,[Head],I1),year(Tail,I1,Year,After_Year),!.
 year([_|_],_,_,_):-!,false.
 
+%__5__
+pr5:-see('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_8/lab.txt'),read_list_str(List,N),seen,sort1(List, N,[]).
+sort1([],[],A):-write_list_str(A),!.
+
+sort1([H|T],[HL|TL],A):-Max =HL, Max_str=H, sort_([H|T],[HL|TL], Max, Max_str, Stroka, Nom),append(A,[Stroka],B),remove_str([H|T], Stroka, List),remove_str([HL|TL], Nom, ListL), sort1(List, ListL,B),!.
+
+sort_([],[], Max, Max_str,Max_str, Max):-!.
+sort_([H|T], [HL|TL], Max, Max_str, St,Nm):- (HL>Max-> Max1 = HL, Max_str1 = H,sort_(T, TL, Max1, Max_str1, St,Nm); sort_(T, TL, Max, Max_str,St,Nm)).
+
+remove_str([H|T], X, List):-remove_str([H|T],[],List,X, 1).
+remove_str([],List,List,_,_):-!.
+remove_str([H|T], Temp, List, X, 1):-(H=X-> remove_str(T, Temp,List,X, 0)),!.
+remove_str([H|T], Temp, List, X, 1):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
+remove_str([H|T], Temp, List, X, 0):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
+
+
+
 
