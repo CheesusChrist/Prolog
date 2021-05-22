@@ -230,3 +230,16 @@ in_free_pos4([H1,H2,H3,H4],Sim):-(var(H1)->H1 is Sim),!;
 				  (var(H2)->H2 is Sim),!;
 				  (var(H3)->H3 is Sim),!;
                   (var(H4)->H4 is Sim).
+
+%9
+pr9:-tell('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_9/Out.txt'),not(pr9_),nl,told.
+pr9_:-make_ar(7,Pos),sochet(Pos_a,3,Pos),put_pos73(Word,Pos_a,[97]),
+		 in_list([97,98,99,100,101,102],S1),
+		 in_free_pos7(Word,S1),
+		 in_list([97,98,99,100,101,102],S2),
+		 in_free_pos7(Word,S2),
+		 in_list([97,98,99,100,101,102],S3),
+		 in_free_pos7(Word,S3),
+		 in_list([97,98,99,100,101,102],S3),
+		 in_free_pos7(Word,S3),
+		 write_str(Word),nl,fail.
