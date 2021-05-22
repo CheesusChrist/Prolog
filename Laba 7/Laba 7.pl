@@ -85,3 +85,9 @@ list_el_num([H|T],El,Num,Chet):-Chet1 is Chet+1,(H = El,
 
 find_w:-read_str(St,_),findw(St).
 findw(St):-list_el_num(St,119,N1),list_el_num(St,120,N2),(N1<N2-> write("Found: "),put(119),nl; write("Found: "),put(120)).
+
+%task 9
+write_str_n(_,0):-!.
+write_str_n(A,N):-write_str(A), nl, N1 is N-1, write_str_n(A, N1).
+big_st:-read_str(Stroka1,N1), read_str(Stroka2, N2), (N1>N2->N3 is N1-N2, write_str_n(Stroka1, N3); N3 is N2-N1, write_str_n(Stroka2, N3)).
+
