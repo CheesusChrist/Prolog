@@ -108,3 +108,8 @@ zamena([],_,St,St):-!.
 zamena([H|T],Counter,NewSt,NStr):-Counter1 is Counter+1,0 is Counter1 mod 2,(H\=97,H\=98-> append1([97],NewSt,NSt1),zamena(T,Counter1,NSt1,NStr),!;append1([99],NewSt,NSt1),zamena(T,Counter1,NSt1,NStr)),!.
 zamena([H|T],Counter,NewSt,NStr):-Counter1 is Counter+1,append1([H],NewSt,NSt1),zamena(T,Counter1,NSt1,NStr).
 
+%task 14
+kol_num:-read_str(St,_),kol_num(St,0,Kol),write(Kol).
+kol_num([],K,K):-!.
+kol_num([H|T],K,Kol):-(H>47,H<58->K1 is K+1,kol_num(T,K1,Kol);kol_num(T,K,Kol)).
+
