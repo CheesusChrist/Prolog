@@ -160,3 +160,53 @@ in_free_pos7([H1,H2,H3,H4,H5,H6,H7],Sim):-(var(H1)->H1 is Sim),!;
 				  (var(H5)->H5 is Sim),!;
 				  (var(H6)->H6 is Sim),!;
 				  (var(H7)->H7 is Sim).
+
+%7
+sssrazm:-tell('c:/Users/Daniel/Documents/GitHub/Prolog/Lab_9/Out.txt'),not(sssrazm_),told.
+sssrazm_:-make_ar(9,Pos),sochet([H1,H2],2,Pos),in_list([97,98,99,100,101,102],Simbol1), %vibrali 2 poz v slove i simvol na etu poziciyu
+put_pos9(Word,[H1,H2],[Simbol1]), %put pos stavit na vibr pozic simvol,
+
+in_list_exlude([97,98,99,100,101,102],Simbol1,NList),in_list_exlude(Pos,H1,NPos),in_list_exlude(NPos,H2,NNPos),% ubrali simvol iz spiska simvolov i iz spiska mest ubrali 2 pozic is pred shaga
+
+sochet([H3, H4],2,NNPos),in_list(NList,Simbol2),put_pos9(Word,[H3,H4],[Simbol2]),% viprali 2 mesta pod 2 simvol vibrali 2 simvol i postavili na eti mesta
+
+in_list_exlude(NList,Simbol2,NList_),in_list_exlude(NNPos,H3,EPos),in_list_exlude(EPos,H4,Pos_),% ubrali 2 simvol i mesta iz pod nego
+
+sochet(Pos1_,3,Pos_),in_list_exlude(NList_,Simbol3, LastSimbol),put_pos93(Word,Pos1_,[Simbol3]),%vibrali 3 mesta pod 3 simvol i postavili ego
+		 in_list_exlude(LastSimbol,S1,LastSimbol1),%vubrali i ubrali 4 simvol
+		 in_free_pos9(Word,S1),% postavili 4 simvol
+		 in_list_exlude(LastSimbol1,S2,NList1),%vibrali i ubrali 5 simvol
+		 in_free_pos9(Word,S2),% postavili 5 simvol
+		 write_str(Word),nl,fail.
+
+put_pos9(Word,[Head1,Head2],[Sim]):-select_pos9(Word,Head1,Sim),select_pos9(Word,Head2,Sim).
+select_pos9(Word,Head,Sim):-(Head is 1->Word=[Sim,_,_,_,_,_,_,_,_],!);
+							(Head is 2->Word=[_,Sim,_,_,_,_,_,_,_],!);
+							(Head is 3->Word=[_,_,Sim,_,_,_,_,_,_],!);
+							(Head is 4->Word=[_,_,_,Sim,_,_,_,_,_],!);
+							(Head is 5->Word=[_,_,_,_,Sim,_,_,_,_],!);
+							(Head is 6->Word=[_,_,_,_,_,Sim,_,_,_],!);
+							(Head is 7->Word=[_,_,_,_,_,_,Sim,_,_],!);
+							(Head is 8->Word=[_,_,_,_,_,_,_,Sim,_],!);
+							(Head is 9->Word=[_,_,_,_,_,_,_,_,Sim]).
+
+put_pos93(Word,[Head1,Head2,Head3],[Sim]):-select_pos9(Word,Head1,Sim),select_pos9(Word,Head2,Sim), select_pos9(Word,Head3,Sim).
+select_pos9(Word,Head,Sim):-(Head is 1->Word=[Sim,_,_,_,_,_,_,_,_],!);
+							(Head is 2->Word=[_,Sim,_,_,_,_,_,_,_],!);
+							(Head is 3->Word=[_,_,Sim,_,_,_,_,_,_],!);
+							(Head is 4->Word=[_,_,_,Sim,_,_,_,_,_],!);
+							(Head is 5->Word=[_,_,_,_,Sim,_,_,_,_],!);
+							(Head is 6->Word=[_,_,_,_,_,Sim,_,_,_],!);
+							(Head is 7->Word=[_,_,_,_,_,_,Sim,_,_],!);
+							(Head is 8->Word=[_,_,_,_,_,_,_,Sim,_],!);
+							(Head is 9->Word=[_,_,_,_,_,_,_,_,Sim]).
+
+in_free_pos9([H1,H2,H3,H4,H5,H6,H7,H8,H9],Sim):-(var(H1)->H1 is Sim),!;
+				  (var(H2)->H2 is Sim),!;
+				  (var(H3)->H3 is Sim),!;
+				  (var(H4)->H4 is Sim),!;
+				  (var(H5)->H5 is Sim),!;
+				  (var(H6)->H6 is Sim),!;
+				  (var(H7)->H7 is Sim),!;
+				  (var(H8)->H8 is Sim),!;
+				  (var(H9)->H9 is Sim).
