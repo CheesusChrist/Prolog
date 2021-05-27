@@ -85,24 +85,3 @@ check_del(Del,N):- is_del(Del,N), sum_digit(N,S), nod(Del,S,SumNod), 1 is SumNod
 sum_del(_,0,Sum,X):-X is Sum, !.
 sum_del(N, Count, Sum, X):- Count1 is Count - 1,  ((check_del(Count,N)) -> Sum1 is Sum + Count;Sum1 is Sum), sum_del(N,Count1,Sum1,X).
 sum_del_chisla(N,X):-sum_del(N,N,0,X).
-
-%zadaniye 13
-posled(1, Length, Length) :- !.
-posled(Num, CurLength, Length) :-
-  CurLength1 is CurLength + 1,
-  (0 is Num mod 2 ->
-  Num1 is Num div 2;
-  Num1 is Num * 3 + 1),
-  posled(Num1, CurLength1, Length).
-posled(Num, Length) :- posled(Num, 0, Length).
-
-% Index - tekushee chislo, CurMax - tekush dlina cepochki, Max - maximalnaya
-posledMore(10000, Max, Max) :- !.
-posledMore(Index, CurMax, Max) :-Index1 is Index + 1,posled(Index, Length),(Length > CurMax ->
-  CurMax1 is Length;CurMax1 is CurMax),posledMore(Index1, CurMax1, Max).
-posledMore(Max) :- posledMore(1, 0, Max).
-
-t13 :-
-  posledMore(Max),
-  write("Max length of line => "),
-  write(Max).
