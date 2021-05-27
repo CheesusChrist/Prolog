@@ -205,3 +205,26 @@ pr_ein7:- Competition = [_,_,_],
 		write(WHO1), write(" is from Australia"), nl,
     		write(WHO2), write(" is Richard's sport"), nl.
 
+
+%name, truth/lie, 1/0 (flowers)
+%vova & andrey tell truth
+pr_ein8:- Students = [_,_,_,_],
+       	    
+    	in_list(Students,[petr,_,_]),
+    	in_list(Students,[vova,_,_]),
+		in_list(Students,[roma,_,_]),
+		in_list(Students,[andrey,_,_]),
+    	
+    
+    	in_list(Students,[_,truth,0]),
+    	in_list(Students,[_,truth,0]),
+    	in_list(Students,[_,lie,1]),
+    	in_list(Students,[_,lie,0]),
+           	    	
+    	not(in_list(Students,[andrey,lie,_])),
+    	not(in_list(Students,[roma,truth,_])),
+    	not(in_list(Students,[petr,truth,_])),
+    	not(in_list(Students,[vova,lie,_])),
+    	not(in_list(Students,[roma,_,1])),
+    
+		write(Students).
