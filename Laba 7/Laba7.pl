@@ -263,5 +263,10 @@ del1([],List,List):-!.
 del1([120,97,98,99|T],Temp,List):-append1(Temp,[97,98,99],Temp1), del1(T,Temp1,List),!.
 del1([H|T],Temp,List):-append1(Temp,[H],Temp1),del1(T,Temp1,List).
 
+%task 18
+task18:-write("Write str: "),nl,read_str(List),abc_numb(List,[],List1),write_str(List1).
+abc_numb([],List,List):-!.
+abc_numb([97,98,99,H|T],Buffer,NL):-H>47,H<58,abc_numb([H|T],Buffer,NL),!.
+abc_numb([H|T],Buffer,NL):-append1(Buffer,[H],BufferN),abc_numb(T,BufferN,NL).
 
 
