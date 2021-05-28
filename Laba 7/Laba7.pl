@@ -191,3 +191,15 @@ task10:-write("Write str: "),nl,read_str(List),check_abc(List,Flag),
 	write_str(ListNew);
 	append_element(List,[122,122,122],ListNewNew),write_str(ListNewNew)).
 
+%task 11
+length_6([H1,H2,H3,H4,H5,H6|_],NewList):-append_element([H1,H2,H3,H4,H5,H6],[],NewList).
+
+insert_o(NewNewList,Count,Count,NewNewList):-!.
+insert_o(List,CurCount,Count,NewNewList):-append_element(List,[111],NewList), CurCount1 is CurCount + 1,
+insert_o(NewList,CurCount1,Count,NewNewList).
+in_o(List,Count,NewNewList):-insert_o(List,0,Count,NewNewList).
+
+task11:-write("Write str: "),nl,read_str(List),length_list(List,Length),
+	((Length>10)->length_6(List,NewList),write_str(NewList);
+	Length1 is 12-Length, in_o(List,Length1,NewNewList),
+	write_str(NewNewList)).
