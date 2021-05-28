@@ -158,3 +158,20 @@ task8:- write("Write str: "),read_str(List),nl,
 	)
 	).
 
+%task 9
+residual(L1,L2,Res):-L1 is L2, Res is 0,!.
+residual(L1,L2,Res):-L1 > L2, Res is L1-L2,!.
+residual(L1,L2,Res):-L1 < L2, Res is L2-L1,!.
+
+repeat_str(_,Num,Num):-!.
+repeat_str(Larger,CurNum,Num):-write_str(Larger),nl, CurNum1 is CurNum+1, repeat_str(Larger,CurNum1,Num).
+repeat_str(Larger,Num):-repeat_str(Larger,0,Num).
+
+
+task9:-write("Write first str: "),read_str(List1),nl,length_list(List1,Length1),
+       write("Write second str: "),read_str(List2),nl,length_list(List2,Length2),
+       residual(Length1,Length2,Res),write("Answer: "),nl,
+       ((Res is 0)->
+       write("Length first str = length second str");
+       ((Length1>Length2)->repeat_str(List1,Res);repeat_str(List2,Res))).
+
