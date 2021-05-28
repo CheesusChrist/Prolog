@@ -236,5 +236,11 @@ word([119,111,114,100|T],Temp,N):-append1(Temp,[108,101,116,116,101,114],Temp1),
 word(T,Temp1,N),!.
 word([H|T],Temp,N):-append1(Temp,[H],Temp1),word(T,Temp1,N),!.
 
+%task 17
+task17:-write("Write str: "),nl,read_str(List), del1(List,[],List1), write_str(List1).
+del1([],List,List):-!.
+del1([120,97,98,99|T],Temp,List):-append1(Temp,[97,98,99],Temp1), del1(T,Temp1,List),!.
+del1([H|T],Temp,List):-append1(Temp,[H],Temp1),del1(T,Temp1,List).
+
 
 
