@@ -204,6 +204,27 @@ task11:-write("Write str: "),nl,read_str(List),length_list(List,Length),
 	Length1 is 12-Length, in_o(List,Length1,NewNewList),
 	write_str(NewNewList)).
 
+%task 12 
+%usloviye - size%3 == 0
+
+task12:- write("Write str: "),nl,read_str(List),length_list(List,L), M is L mod 3, M1 is L-M, piece(List,L1,M1),
+(M > 0 -> piece_end(List,L1,List1), sort(List1,List2); sort(L1,List2)),
+task12(List2).
+
+piece(_,[],0):-!.
+piece([H1,H2,H3],[[H1,H_2,H3]|T2],M):- rand(H1,H2,H3,H_2), M1 is M-3, piece([],T2,M1),!.
+piece([H1,H2,H3|T1],[[H1,H_2,H3]|T2],M):- rand(H1,H2,H3,H_2), M1 is M-3, piece(T1,T2,M1),!.
+
+piece_end([H1,H2,H3],List,L):- rand(H1,H2,H3,H_2), append_list(List,[[H1,H_2,H3]],L),!.
+piece_end([_|T],List,L):- piece_end(T,List,L).
+
+rand(H1,H2,H3,R):- random_between(32,126,R), R\=H1, R\=H2, R\=H3,!.
+rand(H1,H2,H3,R):- rand(H1,H2,H3,R).
+
+task12([]):-!.
+task12([H|T]):- write_str(H), nl, task12(T),!.
+
+
 %task 13
 append1([],List,List):-!.
 append1([H1|T1],List,[H1|T3]):-append1(T1,List,T3).
