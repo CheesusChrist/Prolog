@@ -120,3 +120,19 @@ del3([H|T]):-del3([H|T],1).
 task6:-write("Write str: "),read_str(List),nl,
 	write("Answer: "),del3(List).
 
+
+%task 7
+count_pm([],Plus,Minus,Plus,Minus):-!.
+count_pm([H|T],Plus,Minus,X,Y):-((H is 43)->Plus1 is Plus + 1;Plus1 is Plus),((H is 45)->Minus1 is Minus + 1;Minus1 is Minus), count_pm(T,Plus1,Minus1,X,Y).
+count_pm([H|T],Plus,Minus):-count_pm([H|T],0,0,Plus,Minus).
+
+count_bz([],Zero,Zero):-!.
+count_bz([H|T],Zero,CountZ):-(H is 48->Zero1 is Zero + 1;Zero1 is Zero), count_bz(T,Zero1,CountZ).
+count_bz([_|T],CountZ):-count_bz(T,0,CountZ).
+
+task7:- write("Write str: "),read_str(List),nl,
+	count_pm(List,Plus,Minus),
+	write("Count plus: "),write(Plus),nl,
+	write("Count minus: "), write(Minus), nl,
+	write("Count before zero: "), count_bz(List,CountZ), write(CountZ),nl.
+
