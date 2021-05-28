@@ -224,3 +224,9 @@ task14:-write("Write str: "),nl,read_str(List),kol_num(List,0,Kol),write(Kol).
 kol_num([],K,K):-!.
 kol_num([H|T],K,Kol):-(H>47,H<58->K1 is K+1,kol_num(T,K1,Kol);kol_num(T,K,Kol)).
 
+%task 15
+task15:-write("Write str: "),nl,read_str(List),abc(List).
+abc([]):-!.
+abc([H|T]):-(H\=97,H\=98,H\=99->!,fail;abc(T)).
+
+
