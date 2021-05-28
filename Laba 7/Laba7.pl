@@ -229,4 +229,12 @@ task15:-write("Write str: "),nl,read_str(List),abc(List).
 abc([]):-!.
 abc([H|T]):-(H\=97,H\=98,H\=99->!,fail;abc(T)).
 
+%task 16
+task16:-write("Write str: "),nl,read_str(List),word(List,[],N),write_str(N).
+word([],N,N):-!.
+word([119,111,114,100|T],Temp,N):-append1(Temp,[108,101,116,116,101,114],Temp1),
+word(T,Temp1,N),!.
+word([H|T],Temp,N):-append1(Temp,[H],Temp1),word(T,Temp1,N),!.
+
+
 
