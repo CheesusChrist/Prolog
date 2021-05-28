@@ -203,3 +203,18 @@ task11:-write("Write str: "),nl,read_str(List),length_list(List,Length),
 	((Length>10)->length_6(List,NewList),write_str(NewList);
 	Length1 is 12-Length, in_o(List,Length1,NewNewList),
 	write_str(NewNewList)).
+
+%task 13
+append1([],List,List):-!.
+append1([H1|T1],List,[H1|T3]):-append1(T1,List,T3).
+
+task13:-write("Write str: "),nl,read_str(List),zamena(List,0,[],NewSt),
+	reverse(NewSt,R),write_str(R).
+
+zamena([],_,St,St):-!.
+zamena([H|T],Counter,NewSt,NStr):-Counter1 is Counter+1,0 is Counter1 mod 2,
+	(H\=97,H\=98-> append1([97],NewSt,NSt1),
+	zamena(T,Counter1,NSt1,NStr),!;append1([99],NewSt,NSt1),
+	zamena(T,Counter1,NSt1,NStr)),!.
+zamena([H|T],Counter,NewSt,NStr):-Counter1 is Counter+1,append1([H],NewSt,NSt1),
+	zamena(T,Counter1,NSt1,NStr).
