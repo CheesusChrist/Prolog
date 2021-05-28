@@ -70,3 +70,31 @@ task3:- write("Write str: "),read_str(List),
 	write("Max count word: "),
 	max_word(UniListWord,ListWord,Word),
 	write_str(Word).
+
+%task 4
+length_list([],0):-!.
+length_list([_|T],X):-length_list(T,X1),X is (X1 + 1).
+
+list_el_numb([H|_],H,N,N):-!.
+list_el_numb([_|T],L,X,N):-X1 is X+1,list_el_numb(T,L,X1,N).
+list_el_numb(List,L,N):-list_el_numb(List,L,1,N).
+
+repeat(_, Length, Length):-!.
+repeat(Elem, CurNum, Length):-append_element([],[Elem,32],List),write_str(List),write(" "),CurNum1 is CurNum+1, repeat(Elem,CurNum1,Length).
+repeat(Elem,Length):-repeat(Elem,0,Length).
+
+append_element([], X, X).
+append_element([H|T1], X, [H|T2]) :- append_element(T1, X, T2).
+
+task4:-write("Write str: "),read_str(List),
+       length_list(List,Length),nl,
+       write("Answer: "),
+       ((Length>5)->list_el_numb(List,E1,1),
+       list_el_numb(List,E2,2),list_el_numb(List,E3,3),
+       Length2 is Length-1, Length3 is Length-2,
+       list_el_numb(List,E4,Length3),list_el_numb(List,E5,Length2),
+       list_el_numb(List,E6,Length),
+	append_element([],[E1,32,E2,32,E3,32,E4,32,E5,32,E6],ListLetter),
+       write_str(ListLetter);
+       list_el_numb(List,E,1), repeat(E,Length)).
+
