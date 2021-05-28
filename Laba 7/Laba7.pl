@@ -98,3 +98,16 @@ task4:-write("Write str: "),read_str(List),
        write_str(ListLetter);
        list_el_numb(List,E,1), repeat(E,Length)).
 
+%task 5
+write_numbers([],_,_):-!.
+write_numbers([H|T],CurNum,Elem):-((H is Elem)->write(CurNum),write(" "),CurNum1 is CurNum+1;CurNum1 is CurNum+1),
+write_numbers(T,CurNum1,Elem).
+write_numbers(List,Elem):-write_numbers(List,1,Elem).
+
+task5:-write("Write str: "),read_str(List),
+       length_list(List,Length),nl,
+       list_el_numb(List,Elem,Length),
+       append_element([],[Elem],LetterList),
+       write("Last elem is '"), write_str(LetterList),write("' "), nl,
+       write("Numbers: "), write_numbers(List,Elem).
+
