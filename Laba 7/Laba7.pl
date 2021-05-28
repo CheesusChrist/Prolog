@@ -286,4 +286,12 @@ space([H|T],_,Buffer,NL):-append1(Buffer,[H],BufferN),space(T,0,BufferN,NL),!.
 space([32|T],NSt):-space(T,NSt),!.
 space(Nst,Nst):-!.
 
+%task 21
+task21:-write("Write str: "),nl,read_str([H|T]),read_str(St2),(in_list(St2,H) -> splitting(T,St2,[],[],LW);splitting([H|T],St2,[],[],LW)),write_list_str(LW).
+splitting([],_,[],LW,LW):-!.
+splitting([],_,LastWord,LW,ListWord):-append1(LW,[LastWord],ListWord),!.
+splitting([H|T],List2,TempWord,LW,ListWord):-not(in_list(List2,H)),append1(TempWord,[H],TempWordN),splitting(T,List2,TempWordN,LW,ListWord),!.
+splitting([H1|T],List2,TempWord,LW,ListWord):-append1(LW,[TempWord],NLW),splitting(T,List2,[],NLW,ListWord).
+
+
 
