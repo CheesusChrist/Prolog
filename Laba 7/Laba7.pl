@@ -136,3 +136,25 @@ task7:- write("Write str: "),read_str(List),nl,
 	write("Count minus: "), write(Minus), nl,
 	write("Count before zero: "), count_bz(List,CountZ), write(CountZ),nl.
 
+%task 8
+in_list([X|_],X):-!.
+in_list([_|T],El):-in_list(T,El).
+
+task8:- write("Write str: "),read_str(List),nl,
+	(
+	(
+	not(in_list(List,119));
+	not(in_list(List,120))
+	)->
+	write("'W' and/or 'X' is not on the list");
+	(
+	    list_el_numb(List,119,NumberW),
+	    list_el_numb(List,120,NumberX),
+	    (
+		NumberW>NumberX->
+		write("'X' occurs earlier than 'W'");
+		write("'W' occurs earlier than 'X'")
+	    )
+	)
+	).
+
